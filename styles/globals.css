@@ -4,6 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #018281;
+  font-family: 'Microsoft MS Sans Serif';
+  color: #000000;
+  font-weight: 550;
 }
 
 a {
@@ -13,4 +17,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
 }
