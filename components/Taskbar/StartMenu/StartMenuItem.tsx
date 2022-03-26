@@ -1,5 +1,5 @@
-import startmenuStyles from '../../styles/Startmenu.module.css'
-import { ShortcutProps } from '../Desktop/Shortcut'
+import startmenuStyles from '../../../styles/Startmenu.module.css'
+import { ShortcutProps } from '../../Desktop/Shortcut'
 import Image from 'next/image'
 
 function StartMenuItem({ img, title }: ShortcutProps) {

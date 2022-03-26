@@ -5,7 +5,6 @@ const Home: NextPage = () => {
   return (
     <div className='container'>
       <Desktop />
-      <Taskbar />
     </div>
   )
 }

@@ -17,9 +17,8 @@
   z-index: 999;
   font-weight: 500;
   position: absolute;
-  bottom: 40px;
+  bottom: 35px;
   left: 0px;
-  justify-content: start;
 }
 
 .startButton {
@@ -37,6 +36,15 @@
   align-items: center;
   font-weight: 900;
   cursor: pointer;
+}
+
+.clicked {
+  background: repeating-conic-gradient(#bdbebd 0 25%,#fff 0 50%) 50%/2px 2px;
+  box-shadow: none;
+  border-top: 1.5px solid #000;
+  border-left: 1.5px solid #000;
+  border-bottom: 1.5px solid #fafafa;
+  border-right: 1.5px solid #fafafa;
 }
 
 .sidebar {

@@ -1,5 +1,8 @@
 .desktop {
-  height: 96vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .shortcuts {
@@ -8,7 +11,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  float: left;
+  align-self: flex-start;
 }
 
 .shortcut {
