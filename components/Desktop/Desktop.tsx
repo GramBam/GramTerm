@@ -2,6 +2,7 @@ import Shortcut from "./Shortcut"
 import myComputer from '../../assets/mycomputer.png'
 import resume from '../../assets/resume.png'
 import desktopStyles from '../../styles/Desktop.module.css'
+import StartMenu from "../Taskbar/StartMenu"
 
 function Desktop() {
   return (
@@ -10,6 +11,7 @@ function Desktop() {
         <Shortcut img={myComputer} title="My Computer" />
         <Shortcut img={resume} title="Resume" />
       </div>
+      <StartMenu />
     </div>
   )
 }

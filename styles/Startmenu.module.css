@@ -1,0 +1,76 @@
+.menu {
+  width: 165px;
+  height: 282px;
+  background: #c3c3c3;
+  overflow: hidden;
+  border-top: 2px solid #fafafa;
+  border-left: 2px solid #fafafa;
+  border-right: 1.5px solid #5a5a5a;
+  border-bottom: 1.5px solid #5a5a5a;
+  box-shadow: 1.5px 1.5px #000;
+  max-height: 100%;
+  max-width: 100%;
+  outline: 1px solid #dedede;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  z-index: 999;
+  font-weight: 500;
+  position: absolute;
+  bottom: 40px;
+  left: 0px;
+  justify-content: start;
+}
+
+.startButton {
+  width: 65px;
+  margin: 5px;
+  height: 25px;
+  box-shadow: 1.5px 1.5px #000;
+  border-top: 1.5px solid #fafafa;
+  border-left: 1.5px solid #fafafa;
+  border-bottom: 1.5px solid #5a5a5a;
+  border-right: 1.5px solid #5a5a5a;
+  background: silver;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 25px;
+    background: #7b7d7b;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 10px 5px 10px;
+  align-items: center;
+}
+
+.menuItem:hover {
+  background-color: #00017F;
+  color: #fff
+}
+
+.menuItemImg {
+  margin-right: 100px;
+  border-radius: 6px;
+}
+
+.menuItemTitleStart {
+  margin-left: 8px;
+  text-decoration: underline;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

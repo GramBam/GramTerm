@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import taskbarStyles from '../../styles/Taskbar.module.css'
+import startmenuStyles from '../../styles/Startmenu.module.css'
 import logo from '../../assets/logo.png'
 
 function StartButton() {
   return (
-    <div className={taskbarStyles.startButton}>
-      <Image className={taskbarStyles.speakerImg} src={logo} alt="Speaker" height={15} width={15} />
+    <div className={startmenuStyles.startButton}>
+      <Image className={startmenuStyles.speakerImg} src={logo} alt="WinLogo" height={18} width={18} />
       <p>Start</p>
     </div>
   )

@@ -36,20 +36,3 @@
   padding: 0;
   font-weight: 100;
 }
-
-.startButton {
-  width: 65px;
-  margin: 5px;
-  height: 25px;
-  box-shadow: 1.5px 1.5px #000;
-  border-top: 1.5px solid #fafafa;
-  border-left: 1.5px solid #fafafa;
-  border-bottom: 1.5px solid #5a5a5a;
-  border-right: 1.5px solid #5a5a5a;
-  background: silver;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: 900;
-  cursor: pointer;
-}
