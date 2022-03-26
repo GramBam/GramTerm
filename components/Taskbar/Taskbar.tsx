@@ -1,11 +1,11 @@
 import Clock from './Clock'
-import Start from './Start'
+import StartButton from './StartButton'
 import taskbarStyles from '../../styles/Taskbar.module.css'
 
 function Taskbar() {
   return (
     <div className={taskbarStyles.taskbar}>
-      <Start />
+      <StartButton />
       <Clock />
     </div>
   )

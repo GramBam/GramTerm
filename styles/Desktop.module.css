@@ -1,0 +1,25 @@
+.desktop {
+  height: 96vh;
+}
+
+.shortcuts {
+  list-style-type: none;
+  margin: 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  float: left;
+}
+
+.shortcut {
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.shortcutTitle {
+  color: #FFF;
+  margin: 0;
+  padding: 5px 0 0 0;
+  font-size: 12px;
+}

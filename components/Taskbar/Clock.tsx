@@ -18,8 +18,7 @@ function Clock() {
   const [time, setTime] = useState(getTime)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-
+    const timer: NodeJS.Timer = setInterval(() => {
       setTime(getTime)
     }, 1000);
     return () => {
