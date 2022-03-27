@@ -3,19 +3,19 @@ import startmenuStyles from '../../../styles/Startmenu.module.css'
 import logo from '../../../assets/logo.png'
 import { SyntheticEvent } from 'react';
 
-interface StartButtonProps {
-  show: boolean
-  setShow: Function
+export interface StartButtonProps {
+  menuVisible: boolean
+  setMenuVisible: Function
 }
 
-function StartButton({ show, setShow }: StartButtonProps) {
+function StartButton({ menuVisible, setMenuVisible }: StartButtonProps) {
 
   const onStartClick = (e: SyntheticEvent) => {
-    setShow(!show)
+    setMenuVisible(!menuVisible)
   }
 
   const getButtonClass = (): string => {
-    return show ? startmenuStyles.startButton + ' ' + startmenuStyles.clicked : startmenuStyles.startButton
+    return menuVisible ? startmenuStyles.startButton + ' ' + startmenuStyles.clicked : startmenuStyles.startButton
   }
 
   return (

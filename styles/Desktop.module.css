@@ -1,5 +1,8 @@
 .desktop {
-  height: 100vh;
+  height: 96vh;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,11 +21,12 @@
   margin-bottom: 20px;
   cursor: pointer;
   text-align: center;
+  width: 70px;
 }
 
 .shortcutTitle {
   color: #FFF;
   margin: 0;
   padding: 5px 0 0 0;
-  font-size: 12px;
+  font-size: 0.8rem;
 }

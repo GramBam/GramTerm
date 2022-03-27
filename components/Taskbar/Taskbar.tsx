@@ -1,19 +1,18 @@
 import Clock from './Clock'
-import StartButton from './StartMenu/StartButton'
+import StartButton, { StartButtonProps } from './StartMenu/StartButton'
 import taskbarStyles from '../../styles/Taskbar.module.css'
 import StartMenu from './StartMenu/StartMenu'
 import { useState } from 'react'
 
-function Taskbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+function Taskbar({ menuVisible, setMenuVisible }: StartButtonProps) {
 
   return (
     <>
-      <StartMenu show={menuOpen} />
       <div className={taskbarStyles.taskbar}>
-        <StartButton show={menuOpen} setShow={setMenuOpen} />
+        <StartButton menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
         <Clock />
       </div>
+      <StartMenu show={menuVisible} />
     </>
 
   )
