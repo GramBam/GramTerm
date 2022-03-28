@@ -8,12 +8,14 @@ import lnf from '../../assets/lnf.png'
 import desktopStyles from '../../styles/Desktop.module.css'
 import Taskbar from "../Taskbar/Taskbar"
 import { SyntheticEvent, useState } from "react"
+import Window from "./Window/Window"
 
 function Desktop() {
   const [menuVisible, setMenuVisible] = useState(false)
 
   return (
     <div className={desktopStyles.main}>
+      <Window img={resume} title="Resume" />
       <div className={desktopStyles.desktop} onClick={() => setMenuVisible(false)}>
         <div className={desktopStyles.shortcuts}>
           <Shortcut img={myComputer} title="My Computer" />

@@ -1,4 +1,4 @@
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import desktopStyles from '../../styles/Desktop.module.css'
 
 export interface ShortcutProps {
@@ -13,6 +13,7 @@ function Shortcut({ img, title }: ShortcutProps) {
       <Image src={img.src} alt="img" width={35} height={35} />
       <p className={desktopStyles.shortcutTitle}>{title}</p>
     </div>
+
   )
 }
 
