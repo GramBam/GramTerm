@@ -1,9 +1,10 @@
-import speakerIcon from '../../assets/speakers.png'
+import speakerIcon from '../../public/assets/images/speakers.png'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import taskbarStyles from '../../styles/Taskbar.module.css'
 
 function Clock() {
+  const [time, setTime] = useState('0:00 PM')
 
   const getTime = (): string => {
     let currentTime: string = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -14,8 +15,6 @@ function Clock() {
 
     return currentTime
   }
-
-  const [time, setTime] = useState(getTime)
 
   useEffect(() => {
     const timer: NodeJS.Timer = setInterval(() => {

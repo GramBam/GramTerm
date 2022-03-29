@@ -1,7 +1,8 @@
-import windowStyles from '../../../styles/Window.module.css'
 import Image from 'next/image';
+import windowStyles from '../../../styles/Window.module.css'
 import { ShortcutProps } from '../Shortcut';
 import { useState, MouseEvent } from 'react';
+import Resume from '../../../pages/Resume';
 
 function Window({ img, title }: ShortcutProps) {
 
@@ -16,6 +17,7 @@ function Window({ img, title }: ShortcutProps) {
   })
 
   const handleMouseDown = (e: MouseEvent) => {
+    e.stopPropagation()
     setDragState((prevState) => ({
       diffX: e.clientX - (e.target as HTMLElement).getBoundingClientRect().left,
       diffY: e.clientY - (e.target as HTMLElement).getBoundingClientRect().top,
@@ -25,6 +27,7 @@ function Window({ img, title }: ShortcutProps) {
   }
 
   const handleMouseMove = (e: MouseEvent) => {
+    e.stopPropagation()
     if (dragState.dragging) {
       let style = { left: e.clientX - dragState.diffX, top: e.clientY - dragState.diffY }
       setDragState((prevState) => ({ ...prevState, style }))
@@ -32,21 +35,20 @@ function Window({ img, title }: ShortcutProps) {
   }
 
   const handleMouseUp = (e: MouseEvent) => {
+    e.stopPropagation()
     if (dragState.dragging) {
       let parent = ((e.target as HTMLElement).parentElement as HTMLElement)
       let bounds = checkBounds(parent.getBoundingClientRect())
 
       let left: number = bounds.left
       let top: number = bounds.top
-      setDragState((prevState) => ({ ...prevState, dragging: false, style: { left, top } }))
+      setDragState((prevState) => ({ ...prevState, dragging: false }))
     }
-
   }
 
   const checkBounds = (bounds: DOMRect): { left: number, top: number } => {
     let left: number = bounds.left
     let top: number = bounds.top
-    console.log('before', left, top, bounds);
 
     if (left < 0) {
       left = 0
@@ -59,9 +61,6 @@ function Window({ img, title }: ShortcutProps) {
     } else if (top + bounds.height > screen.height) {
       top = screen.height - bounds.height
     }
-
-    console.log('after', left, top);
-
 
     return { left, top }
   }
@@ -79,6 +78,7 @@ function Window({ img, title }: ShortcutProps) {
           <button>×</button>
         </div>
       </div>
+      <Resume />
     </div>
   )
 }

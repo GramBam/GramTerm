@@ -1,9 +1,9 @@
 import startmenuStyles from '../../../styles/Startmenu.module.css'
 import StartMenuItem from './StartMenuItem';
 import Image from 'next/image'
-import sidebar from '../../../assets/sidebar.png'
-import linkedIn from '../../../assets/linkedin.webp'
-import github from '../../../assets/github.webp'
+import sidebar from '../../../public/assets/images/sidebar.png'
+import linkedIn from '../../../public/assets/images/linkedin.webp'
+import github from '../../../public/assets/images/github.webp'
 
 export interface StartMenuProps {
   show: boolean
