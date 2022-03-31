@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import windowStyles from '../../../styles/Window.module.css'
-import { ShortcutProps } from '../Shortcut';
 import { useState, MouseEvent } from 'react';
 import Resume from '../../../pages/Resume';
 
-function Window({ img, title }: ShortcutProps) {
+interface WindowProps {
+  icon: string
+  title: string
+
+}
+
+function Window({ icon, title }: WindowProps) {
 
   const [dragState, setDragState] = useState({
     dragging: false,
@@ -12,15 +17,21 @@ function Window({ img, title }: ShortcutProps) {
     diffY: 0,
     style: {
       top: 100,
-      left: 100,
+      left: 200,
     }
   })
 
+  const [size, setSize] = useState({ full: false, width: '50vw', height: '70vh' })
+
   const handleMouseDown = (e: MouseEvent) => {
+    let target = e.target as HTMLElement
+    if (target.id !== 'nav') {
+      return
+    }
     e.stopPropagation()
     setDragState((prevState) => ({
-      diffX: e.clientX - (e.target as HTMLElement).getBoundingClientRect().left,
-      diffY: e.clientY - (e.target as HTMLElement).getBoundingClientRect().top,
+      diffX: e.clientX - target.getBoundingClientRect().left,
+      diffY: e.clientY - target.getBoundingClientRect().top,
       dragging: true,
       style: prevState.style
     }))
@@ -35,20 +46,19 @@ function Window({ img, title }: ShortcutProps) {
   }
 
   const handleMouseUp = (e: MouseEvent) => {
-    e.stopPropagation()
     if (dragState.dragging) {
       let parent = ((e.target as HTMLElement).parentElement as HTMLElement)
       let bounds = checkBounds(parent.getBoundingClientRect())
 
       let left: number = bounds.left
       let top: number = bounds.top
-      setDragState((prevState) => ({ ...prevState, dragging: false }))
+      setDragState((prevState) => ({ ...prevState, dragging: false, style: { left, top } }))
     }
   }
 
-  const checkBounds = (bounds: DOMRect): { left: number, top: number } => {
-    let left: number = bounds.left
-    let top: number = bounds.top
+  const checkBounds = (bounds: DOMRect | ClientRect): { left: number, top: number } => {
+    let left: number = dragState.style.left
+    let top: number = dragState.style.top
 
     if (left < 0) {
       left = 0
@@ -65,17 +75,38 @@ function Window({ img, title }: ShortcutProps) {
     return { left, top }
   }
 
+  const destroyWindow = () => {
+
+  }
+  const resizeWindow = () => {
+    if (size.full) {
+      setDragState((prevState) => ({ ...prevState, style: { left: 200, top: 100 } }))
+      setSize({ full: false, width: '50vw', height: '70vh' })
+    } else {
+      setDragState((prevState) => ({ ...prevState, style: { left: 0, top: 0 } }))
+      setSize({ full: true, width: '100vw', height: '97vh' })
+    }
+  }
+
   return (
-    <div className={windowStyles.windowMain} style={{ ...dragState.style }}>
-      <div className={windowStyles.windowNav} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} onMouseLeave={handleMouseUp} onMouseOut={handleMouseUp}>
+    <div className={windowStyles.windowMain} style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height }}>
+      <div
+        className={windowStyles.windowNav}
+        id={'nav'}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onMouseOut={handleMouseUp}
+      >
         <div className={windowStyles.windowName}>
-          <Image src={img.src} alt="windowImg" width={15} height={15} className={windowStyles.windowImg} />
+          <Image src={icon} alt="windowImg" width={15} height={15} className={windowStyles.windowImg} />
           <p>{title}</p>
         </div>
         <div className={windowStyles.windowButtons}>
           <button>-</button>
-          <button><span>⠀</span></button>
-          <button>×</button>
+          <button onClick={resizeWindow}><span>⠀</span></button>
+          <button onClick={destroyWindow}>×</button>
         </div>
       </div>
       <Resume />
