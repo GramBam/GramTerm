@@ -3,16 +3,16 @@
   height: 35px;
   background: silver;
   border-top: 2px solid #fafafa;
-  z-index: 5;
+  z-index: 999;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  user-select:none
+  user-select: none
 }
 
 .clockContainer {
-  display:flex;
+  display: flex;
   width: 75px;
   margin: 5px;
   height: 25px;
@@ -64,7 +64,7 @@
   border-radius: 0.5px;
   justify-content: flex-start;
   box-shadow: none;
-  background: repeating-conic-gradient(#bdbebd 0 25%,#fff 0 50%) 50%/2px 2px;
+  background: repeating-conic-gradient(#bdbebd 0 25%, #fff 0 50%) 50%/2px 2px;
   border-top: 1.5px solid #000;
   border-left: 1.5px solid #000;
   border-bottom: 1.5px solid #fafafa;

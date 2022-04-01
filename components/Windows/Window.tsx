@@ -1,16 +1,19 @@
 import Image from 'next/image';
 import windowStyles from '../../styles/Window.module.css'
 import { useState, MouseEvent } from 'react';
-import Resume from '../../pages/Resume';
-import LnF from '../../pages/LnF';
+import Resume from './Resume';
+import Languages from './Languages+Tools/Languages';
+import Tools from './Languages+Tools/Tools';
 
 interface WindowProps {
   icon: string
   title: string
   id: number;
+  cb: Function,
+  zIndex: number
 }
 
-function Window({ icon, title, id }: WindowProps) {
+function Window({ icon, title, id, cb, zIndex }: WindowProps) {
 
   const [dragState, setDragState] = useState({
     dragging: false,
@@ -77,8 +80,9 @@ function Window({ icon, title, id }: WindowProps) {
   }
 
   const destroyWindow = () => {
-
+    cb(id, 'hide')
   }
+
   const resizeWindow = () => {
     if (size.full) {
       setDragState((prevState) => ({ ...prevState, style: { left: 200, top: 100 } }))
@@ -89,8 +93,19 @@ function Window({ icon, title, id }: WindowProps) {
     }
   }
 
+  const getWindowContent = () => {
+    switch (title) {
+      case 'Resume': return <Resume />;
+      case 'Languages & Frameworks': return <Languages />;
+      case 'Tools': return <Tools />;
+    }
+  }
+
   return (
-    <div className={windowStyles.windowMain} style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height }}>
+    <div
+      className={windowStyles.windowMain}
+      style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height, zIndex }}
+    >
       <div
         className={windowStyles.windowNav}
         id={'nav'}
@@ -105,12 +120,12 @@ function Window({ icon, title, id }: WindowProps) {
           <p>{title}</p>
         </div>
         <div className={windowStyles.windowButtons}>
-          <button>-</button>
+          <button onClick={destroyWindow}>-</button>
           <button onClick={resizeWindow}><span>⠀</span></button>
           <button onClick={destroyWindow}>×</button>
         </div>
       </div>
-      <LnF />
+      {getWindowContent()}
     </div>
   )
 }
