@@ -15,6 +15,8 @@ interface WindowProps {
 
 function Window({ icon, title, id, cb, zIndex }: WindowProps) {
 
+  console.log(title, zIndex);
+
   const [dragState, setDragState] = useState({
     dragging: false,
     diffX: 0,
@@ -28,6 +30,7 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
   const [size, setSize] = useState({ full: false, width: '50vw', height: '70vh' })
 
   const handleMouseDown = (e: MouseEvent) => {
+    focusWindow()
     let target = e.target as HTMLElement
     if (target.id !== 'nav') {
       return
@@ -93,6 +96,10 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
     }
   }
 
+  const focusWindow = () => {
+    cb(id, 'focused')
+  }
+
   const getWindowContent = () => {
     switch (title) {
       case 'Resume': return <Resume />;
@@ -105,6 +112,7 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
     <div
       className={windowStyles.windowMain}
       style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height, zIndex }}
+      onMouseDown={focusWindow}
     >
       <div
         className={windowStyles.windowNav}
