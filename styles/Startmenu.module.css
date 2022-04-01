@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.startButton p {
+  line-height: 0;
+}
+
 .clicked {
   background: repeating-conic-gradient(#bdbebd 0 25%,#fff 0 50%) 50%/2px 2px;
   box-shadow: none;
@@ -83,3 +87,7 @@
   flex-direction: column;
   width: 100%;
 }
+
+/* .menuList :nth-child(4) {
+  border-top: #5a5a5a 1px solid;
+} */

@@ -1,30 +1,27 @@
 import startmenuStyles from '../../../styles/Startmenu.module.css'
 import StartMenuItem from './StartMenuItem';
 import Image from 'next/image'
-import sidebar from '../../../public/assets/images/sidebar.png'
-import linkedIn from '../../../public/assets/images/linkedin.webp'
-import github from '../../../public/assets/images/github.webp'
-import resume from '../../../public/assets/images/resume.png'
 
 export interface StartMenuProps {
   show: boolean
 }
 
 function StartMenu({ show }: StartMenuProps) {
+  const dir = '/assets/images/'
 
   return (
     <>
       {show &&
         <div className={startmenuStyles.menu}>
           <div className={startmenuStyles.sidebar}>
-            {show && <Image src={sidebar} height={150} width={25} alt="sidebar" />}
+            {show && <Image src={dir + 'sidebar.png'} height={150} width={25} alt="sidebar" />}
           </div>
           <div className={startmenuStyles.menuList}>
-            <StartMenuItem img={linkedIn} title="LinkedIn" url='https://www.linkedin.com/in/graham-moss/' />
-            <StartMenuItem img={github} title="GitHub" url='https://github.com/GramBam/' />
-            <StartMenuItem img={resume} title="Resume" url='../../../public/assets/pdfs/myResume.pdf' />
-            <StartMenuItem img={github} title="GitHub" url='https://github.com/GramBam/' />
-            <StartMenuItem img={linkedIn} title="LinkedIn" url='https://www.linkedin.com/in/graham-moss/' />
+            <StartMenuItem img={dir + 'linkedin.webp'} title="LinkedIn" url='https://www.linkedin.com/in/graham-moss/' />
+            <StartMenuItem img={dir + 'github.webp'} title="GitHub" url='https://github.com/GramBam/' />
+            <StartMenuItem img={dir + 'resume.png'} title="Resume" url='/assets/pdfs/myResume.pdf' />
+            <StartMenuItem img={dir + 'github.webp'} title="GitHub" url='https://github.com/GramBam/' />
+            <StartMenuItem img={dir + 'linkedin.webp'} title="LinkedIn" url='https://www.linkedin.com/in/graham-moss/' />
           </div>
         </div>
 

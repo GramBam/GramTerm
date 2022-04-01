@@ -1,15 +1,16 @@
 import Image from 'next/image';
-import windowStyles from '../../../styles/Window.module.css'
+import windowStyles from '../../styles/Window.module.css'
 import { useState, MouseEvent } from 'react';
-import Resume from '../../../pages/Resume';
+import Resume from '../../pages/Resume';
+import LnF from '../../pages/LnF';
 
 interface WindowProps {
   icon: string
   title: string
-
+  id: number;
 }
 
-function Window({ icon, title }: WindowProps) {
+function Window({ icon, title, id }: WindowProps) {
 
   const [dragState, setDragState] = useState({
     dragging: false,
@@ -109,7 +110,7 @@ function Window({ icon, title }: WindowProps) {
           <button onClick={destroyWindow}>×</button>
         </div>
       </div>
-      <Resume />
+      <LnF />
     </div>
   )
 }

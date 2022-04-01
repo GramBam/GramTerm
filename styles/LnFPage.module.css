@@ -1,0 +1,18 @@
+.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.icon {
+  margin: 8px 30px;
+  flex-basis: 15%;
+}
+
+.iconTitle {
+  font-size: 18px;
+  font-weight: 600;
+}

@@ -2,7 +2,7 @@ import startmenuStyles from '../../../styles/Startmenu.module.css'
 import Image from 'next/image'
 
 interface MenuItemProps {
-  img: StaticImageData
+  img: string
   title: string;
   url: string
 }
