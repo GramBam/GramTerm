@@ -3,7 +3,7 @@ import lnfStyles from '../styles/LnFPage.module.css'
 
 function LnF() {
 
-  const data = ['react', 'next', 'javascript', 'typescript', 'node', 'express', 'ruby', 'rails', 'html', 'css', 'pixi', 'angularJS']
+  const data = ['html', 'css', 'javascript', 'typescript', 'react', 'next', 'node', 'express', 'ruby', 'rails', 'pixi', 'angularJS']
 
   return (
     <div className={lnfStyles.icons}>
