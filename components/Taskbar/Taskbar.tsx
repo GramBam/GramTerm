@@ -9,8 +9,10 @@ function Taskbar({ menuVisible, setMenuVisible }: StartButtonProps) {
     <>
       <div className={taskbarStyles.taskbar}>
         <StartButton menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
-        <TaskbarButton img='/assets/images/myComputer.png' title={'My Computer'} />
-        <TaskbarButton img='/assets/images/resume.png' title={'Resume'} />
+        <div className={taskbarStyles.taskbarButtons}>
+          <TaskbarButton icon='/assets/images/myComputer.png' title={'My Computer'} clicked={true} />
+          <TaskbarButton icon='/assets/images/resume.png' title={'Resume'} clicked={false} />
+        </div>
         <Clock />
       </div>
       <StartMenu show={menuVisible} />

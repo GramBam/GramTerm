@@ -14,9 +14,6 @@ interface WindowProps {
 }
 
 function Window({ icon, title, id, cb, zIndex }: WindowProps) {
-
-  console.log(title, zIndex);
-
   const [dragState, setDragState] = useState({
     dragging: false,
     diffX: 0,
