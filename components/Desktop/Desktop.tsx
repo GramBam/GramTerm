@@ -8,22 +8,32 @@ import { pages } from "../../data/PageData"
 function Desktop() {
   const [menuVisible, setMenuVisible] = useState(false)
   const [windowState, setWindowsState] = useState([
-    { visible: false, zIndex: 5 },
-    { visible: false, zIndex: 5 },
-    { visible: false, zIndex: 5 },
-    { visible: false, zIndex: 5 },
-    { visible: false, zIndex: 5 },
-    { visible: false, zIndex: 5 }
+    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false },
   ])
 
-  const toggleWindow = (i: number, action: 'show' | 'hide' | 'toggle' | 'focused') => {
+  const toggleWindow = (i: number, action: 'show' | 'hide' | 'toggle' | 'focus') => {
     let arr = [...windowState]
 
     switch (action) {
       case 'show': arr[i].visible = true; arr[i].zIndex = getHighestZIndex() + 1; break;
       case 'hide': arr[i].visible = false; break;
       case 'toggle': arr[i].visible = !arr[i].visible; break;
-      case 'focused': arr[i].zIndex = getHighestZIndex() + 1; break;
+      case 'focus': arr[i].zIndex = getHighestZIndex() + 1; break;
+    }
+
+    //If you close a window while other windows are open, find one and set it to focused
+    for (let j = 0; j < arr.length; j++) {
+      if (action === 'hide' && arr[j].visible) {
+        arr[j].focused = true
+        break;
+      } else {
+        arr[j].focused = j === i
+      }
     }
 
     setWindowsState(arr)
@@ -49,6 +59,7 @@ function Desktop() {
         key={i}
         cb={toggleWindow}
         zIndex={windowState[i].zIndex}
+        focused={windowState[i].focused}
       />
     ))
   }
@@ -67,7 +78,7 @@ function Desktop() {
           </div>
         </div>
       </div>
-      <Taskbar menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
+      <Taskbar menuVisible={menuVisible} setMenuVisible={setMenuVisible} windowState={windowState} windowStateCB={toggleWindow} />
     </>
   )
 }

@@ -10,10 +10,11 @@ interface WindowProps {
   title: string
   id: number;
   cb: Function,
-  zIndex: number
+  zIndex: number,
+  focused: boolean
 }
 
-function Window({ icon, title, id, cb, zIndex }: WindowProps) {
+function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
   const [dragState, setDragState] = useState({
     dragging: false,
     diffX: 0,
@@ -79,7 +80,7 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
     return { left, top }
   }
 
-  const destroyWindow = () => {
+  const hideWindow = () => {
     cb(id, 'hide')
   }
 
@@ -94,7 +95,7 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
   }
 
   const focusWindow = () => {
-    cb(id, 'focused')
+    cb(id, 'focus')
   }
 
   const getWindowContent = () => {
@@ -119,15 +120,16 @@ function Window({ icon, title, id, cb, zIndex }: WindowProps) {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
         onMouseOut={handleMouseUp}
+        style={{ backgroundColor: focused ? '#00007c' : '#7b7d7b' }}
       >
         <div className={windowStyles.windowName}>
           <Image src={icon} alt="windowImg" width={15} height={15} className={windowStyles.windowImg} />
           <p>{title}</p>
         </div>
         <div className={windowStyles.windowButtons}>
-          <button onClick={destroyWindow}>-</button>
+          <button onClick={hideWindow}>-</button>
           <button onClick={resizeWindow}><span>⠀</span></button>
-          <button onClick={destroyWindow}>×</button>
+          <button onClick={hideWindow}>×</button>
         </div>
       </div>
       {getWindowContent()}

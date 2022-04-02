@@ -1,17 +1,39 @@
 import Clock from './Clock'
-import StartButton, { StartButtonProps } from './StartMenu/StartButton'
+import StartButton from './StartMenu/StartButton'
 import taskbarStyles from '../../styles/Taskbar.module.css'
 import StartMenu from './StartMenu/StartMenu'
 import TaskbarButton from './TaskbarButton'
+import { pages } from '../../data/PageData'
 
-function Taskbar({ menuVisible, setMenuVisible }: StartButtonProps) {
+interface TaskbarProps {
+  menuVisible: boolean;
+  setMenuVisible: Function;
+  windowState: { visible: boolean, zIndex: number, focused: boolean }[]
+  windowStateCB: Function;
+}
+
+function Taskbar({ menuVisible, setMenuVisible, windowState, windowStateCB }: TaskbarProps) {
+
+  const getButtons = () => {
+    return [...Array(windowState.length)].map((_, i) => (
+      windowState[i].visible &&
+      <TaskbarButton
+        icon={pages[i].img}
+        title={pages[i].title}
+        clicked={windowState[i].focused}
+        cb={windowStateCB}
+        key={i}
+        id={i}
+      />
+    ))
+  }
+
   return (
     <>
       <div className={taskbarStyles.taskbar}>
         <StartButton menuVisible={menuVisible} setMenuVisible={setMenuVisible} />
         <div className={taskbarStyles.taskbarButtons}>
-          <TaskbarButton icon='/assets/images/myComputer.png' title={'My Computer'} clicked={true} />
-          <TaskbarButton icon='/assets/images/resume.png' title={'Resume'} clicked={false} />
+          {getButtons()}
         </div>
         <Clock />
       </div>
