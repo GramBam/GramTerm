@@ -1,6 +1,6 @@
 .taskbar {
   width: 100%;
-  height: 35px;
+  height: 3.75vh;
   background: silver;
   border-top: 2px solid #fafafa;
   z-index: 999;

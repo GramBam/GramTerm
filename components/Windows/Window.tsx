@@ -21,12 +21,20 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
     diffX: 0,
     diffY: 0,
     style: {
-      top: 100,
-      left: 200,
+      top: 50,
+      left: 50,
     }
   })
 
-  const [size, setSize] = useState({ full: false, width: '50vw', height: '70vh' })
+  let defaultWidth: string = '70vw'
+  let defaultHeight: string = '50vh'
+
+  if (typeof window !== "undefined") {
+    defaultWidth = window.innerWidth > 650 ? '50vw' : '70vw'
+    defaultHeight = window.innerWidth > 650 ? '70vh' : '50vh'
+  }
+
+  const [size, setSize] = useState({ full: false, width: defaultWidth, height: defaultHeight })
 
   const handleMouseDown = (e: MouseEvent) => {
     focusWindow()
@@ -87,8 +95,8 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
 
   const resizeWindow = () => {
     if (size.full) {
-      setDragState((prevState) => ({ ...prevState, style: { left: 200, top: 100 } }))
-      setSize({ full: false, width: '50vw', height: '70vh' })
+      setDragState((prevState) => ({ ...prevState, style: { left: 50, top: 50 } }))
+      setSize({ full: false, width: defaultWidth, height: defaultHeight })
     } else {
       setDragState((prevState) => ({ ...prevState, style: { left: 0, top: 0 } }))
       setSize({ full: true, width: '100vw', height: '97vh' })

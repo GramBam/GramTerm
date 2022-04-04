@@ -11,7 +11,7 @@ function Desktop() {
     { visible: false, zIndex: 5, focused: false },
     { visible: false, zIndex: 5, focused: false },
     { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
+    { visible: true, zIndex: 5, focused: false },
     { visible: false, zIndex: 5, focused: false },
     { visible: false, zIndex: 5, focused: false },
   ])
