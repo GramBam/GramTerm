@@ -10,8 +10,12 @@ export interface ShortcutProps {
 
 function Shortcut({ img, title, id, cb }: ShortcutProps) {
 
+  const openWindow = () => {
+    cb(id, 'show')
+  }
+
   return (
-    <div className={desktopStyles.shortcut} onDoubleClick={() => cb(id, 'show')}>
+    <div className={desktopStyles.shortcut} onTouchStart={openWindow} onDoubleClick={openWindow}>
       <Image src={img} alt="img" width={35} height={35} />
       <p className={desktopStyles.shortcutTitle}>{title}</p>
     </div>

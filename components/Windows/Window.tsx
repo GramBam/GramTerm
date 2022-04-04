@@ -99,7 +99,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       setSize({ full: false, width: defaultWidth, height: defaultHeight })
     } else {
       setDragState((prevState) => ({ ...prevState, style: { left: 0, top: 0 } }))
-      setSize({ full: true, width: '100vw', height: '97vh' })
+      setSize({ full: true, width: '100vw', height: '96.25vh' })
     }
   }
 

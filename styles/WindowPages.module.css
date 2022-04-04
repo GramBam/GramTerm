@@ -23,7 +23,6 @@
   text-align: center;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .computerApps p {
@@ -34,7 +33,7 @@
 
 .compApp {
   margin: 0px 5px;
-  flex-basis: 20%;
+  flex-basis: 25%;
   cursor: pointer;
 }
 
