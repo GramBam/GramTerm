@@ -1,4 +1,4 @@
-import toolStyles from '../../../styles/Tools.module.css'
+import toolStyles from '../../../styles/WindowPages.module.css'
 import Image from 'next/image'
 
 interface TitledIconProps {

@@ -4,6 +4,7 @@ import { useState, MouseEvent } from 'react';
 import Resume from './Resume';
 import Languages from './Languages+Tools/Languages';
 import Tools from './Languages+Tools/Tools';
+import MyComputer from './MyComputer';
 
 interface WindowProps {
   icon: string
@@ -103,6 +104,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       case 'Resume': return <Resume />;
       case 'Languages & Frameworks': return <Languages />;
       case 'Tools': return <Tools />;
+      case 'My Computer': return <MyComputer />;
     }
   }
 

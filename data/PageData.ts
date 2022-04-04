@@ -1,8 +1,8 @@
 export const pages: { img: string, title: string }[] = [
-  { img: '/assets/images/mycomputer.png', title: "My Computer" },
-  { img: '/assets/images/resume.png', title: "Resume" },
-  { img: '/assets/images/projects.png', title: "Projects" },
-  { img: '/assets/images/lnf.png', title: "Languages & Frameworks" },
-  { img: '/assets/images/tools.png', title: "Tools" },
-  { img: '/assets/images/mail.png', title: "Mail" },
+  { img: '/assets/images/shortcuts/mycomputer.png', title: "My Computer" },
+  { img: '/assets/images/shortcuts/resume.png', title: "Resume" },
+  { img: '/assets/images/shortcuts/projects.png', title: "Projects" },
+  { img: '/assets/images/shortcuts/lnf.png', title: "Languages & Frameworks" },
+  { img: '/assets/images/shortcuts/tools.png', title: "Tools" },
+  { img: '/assets/images/shortcuts/mail.png', title: "Mail" },
 ]
