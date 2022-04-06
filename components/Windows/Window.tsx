@@ -16,14 +16,18 @@ interface WindowProps {
 }
 
 function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
+
+  const getRandomStartPoint = (): { top: number, left: number } => {
+    let top: number = Math.random() * (75 - 25 + 1) + 25
+    let left: number = Math.random() * (125 - 75 + 1) + 75
+    return { top, left }
+  }
+
   const [dragState, setDragState] = useState({
     dragging: false,
     diffX: 0,
     diffY: 0,
-    style: {
-      top: 50,
-      left: 50,
-    }
+    style: getRandomStartPoint()
   })
 
   let defaultWidth: string = '60vw'
@@ -101,7 +105,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
 
   const resizeWindow = () => {
     if (size.full) {
-      setDragState((prevState) => ({ ...prevState, style: { left: 50, top: 50 } }))
+      setDragState((prevState) => ({ ...prevState, style: getRandomStartPoint() }))
       setSize({ full: false, width: defaultWidth, height: defaultHeight })
     } else {
       setDragState((prevState) => ({ ...prevState, style: { left: 0, top: 0 } }))
