@@ -9,33 +9,36 @@ function Desktop() {
 
   const [menuVisible, setMenuVisible] = useState(false)
   const [windowState, setWindowsState] = useState([
-    { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
-    { visible: false, zIndex: 5, focused: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
+    { visible: false, zIndex: 5, focused: false, active: false },
   ])
 
-  const toggleWindow = (i: number, action: 'show' | 'hide' | 'toggle' | 'focus') => {
+  const toggleWindow = (i: number, action: 'show' | 'hide' | 'minimize' | 'focus') => {
     let arr = [...windowState]
 
     switch (action) {
-      case 'show': arr[i].visible = true; arr[i].zIndex = getHighestZIndex() + 1; break;
-      case 'hide': arr[i].visible = false; break;
-      case 'toggle': arr[i].visible = !arr[i].visible; break;
+      case 'show': arr[i].visible = true; arr[i].zIndex = getHighestZIndex() + 1; arr[i].active = true; break;
+      case 'hide': arr[i].visible = false; arr[i].active = false; arr[i].focused = false; break;
+      case 'minimize': arr[i].visible = false; arr[i].focused = false; break;
       case 'focus': arr[i].zIndex = getHighestZIndex() + 1; break;
     }
 
     //If you close a window while other windows are open, find one and set it to focused
     for (let j = 0; j < arr.length; j++) {
-      if (action === 'hide' && arr[j].visible) {
+      if ((action === 'hide' || action === 'minimize') && arr[j].visible) {
         arr[j].focused = true
         break;
       } else {
         arr[j].focused = j === i
       }
     }
+
+    console.log(action, arr[i]);
+
 
     setWindowsState(arr)
   }

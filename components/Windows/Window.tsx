@@ -26,11 +26,11 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
     }
   })
 
-  let defaultWidth: string = '70vw'
+  let defaultWidth: string = '60vw'
   let defaultHeight: string = '50vh'
 
   if (typeof window !== "undefined") {
-    defaultWidth = window.innerWidth > 650 ? '50vw' : '70vw'
+    defaultWidth = window.innerWidth > 650 ? '40vw' : '60vw'
     defaultHeight = window.innerWidth > 650 ? '70vh' : '50vh'
   }
 
@@ -38,6 +38,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
 
   const handleMouseDown = (e: MouseEvent) => {
     focusWindow()
+
     let target = e.target as HTMLElement
     if (target.id !== 'nav') {
       return
@@ -89,9 +90,14 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
     return { left, top }
   }
 
-  const hideWindow = () => {
-    cb(id, 'hide')
+  const hideWindow = (e: MouseEvent<HTMLButtonElement>) => {
+    cb(id, (e.target as HTMLButtonElement).id)
   }
+
+  const focusWindow = () => {
+    cb(id, 'focus')
+  }
+
 
   const resizeWindow = () => {
     if (size.full) {
@@ -101,10 +107,6 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       setDragState((prevState) => ({ ...prevState, style: { left: 0, top: 0 } }))
       setSize({ full: true, width: '100vw', height: '96.25vh' })
     }
-  }
-
-  const focusWindow = () => {
-    cb(id, 'focus')
   }
 
   const getWindowContent = () => {
@@ -137,9 +139,9 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
           <p>{title}</p>
         </div>
         <div className={windowStyles.windowButtons}>
-          <button onClick={hideWindow}>-</button>
-          <button onClick={resizeWindow}><span>⠀</span></button>
-          <button onClick={hideWindow}>×</button>
+          <button id="minimize" onClick={hideWindow}>-</button>
+          <button id="resize" onClick={resizeWindow}><span>⠀</span></button>
+          <button id="hide" onClick={hideWindow}>×</button>
         </div>
       </div>
       {getWindowContent()}

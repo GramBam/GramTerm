@@ -8,19 +8,20 @@ import { pages } from '../../data/PageData'
 interface TaskbarProps {
   menuVisible: boolean;
   setMenuVisible: Function;
-  windowState: { visible: boolean, zIndex: number, focused: boolean }[]
+  windowState: { visible: boolean, zIndex: number, focused: boolean, active: boolean }[]
   windowStateCB: Function;
 }
 
 function Taskbar({ menuVisible, setMenuVisible, windowState, windowStateCB }: TaskbarProps) {
 
   const getButtons = () => {
+
     return [...Array(windowState.length)].map((_, i) => (
-      windowState[i].visible &&
+      windowState[i].active &&
       <TaskbarButton
         icon={pages[i].img}
         title={pages[i].title}
-        clicked={windowState[i].focused}
+        windowState={windowState[i]}
         cb={windowStateCB}
         key={i}
         id={i}
