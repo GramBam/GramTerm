@@ -4,7 +4,7 @@ import Image from 'next/image'
 interface MenuItemProps {
   img: string
   title: string;
-  url: string
+  url?: string
 }
 
 function StartMenuItem({ img, title, url }: MenuItemProps) {

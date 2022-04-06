@@ -11,8 +11,6 @@ interface TaskbarButtonProps {
 
 function TaskbarButton({ icon, title, windowState, cb, id }: TaskbarButtonProps) {
 
-  console.log(windowState.focused, title)
-
   const handleClick = () => {
     if (windowState.visible) {
       cb(id, windowState.focused ? 'minimize' : 'focus')
@@ -21,8 +19,12 @@ function TaskbarButton({ icon, title, windowState, cb, id }: TaskbarButtonProps)
     }
   }
 
+  const getClass = (): string => {
+    return windowState.focused ? taskbarStyles.taskbarButton + ' ' + taskbarStyles.taskbarButtonClicked : taskbarStyles.taskbarButton
+  }
+
   return (
-    <div className={windowState.focused ? taskbarStyles.taskbarButton + ' ' + taskbarStyles.taskbarButtonClicked : taskbarStyles.taskbarButton} onClick={handleClick}>
+    <div className={getClass()} onClick={handleClick}>
       <Image src={icon} alt="windowImg" width={15} height={15} />
       <p style={{ marginLeft: 5 }}>{title}</p>
     </div>

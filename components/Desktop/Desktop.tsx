@@ -8,14 +8,7 @@ import { pages } from "../../data/PageData"
 function Desktop() {
 
   const [menuVisible, setMenuVisible] = useState(false)
-  const [windowState, setWindowsState] = useState([
-    { visible: false, zIndex: 5, focused: false, active: false },
-    { visible: false, zIndex: 5, focused: false, active: false },
-    { visible: false, zIndex: 5, focused: false, active: false },
-    { visible: false, zIndex: 5, focused: false, active: false },
-    { visible: false, zIndex: 5, focused: false, active: false },
-    { visible: false, zIndex: 5, focused: false, active: false },
-  ])
+  const [windowState, setWindowsState] = useState(Array.from({ length: 6 }, () => ({ visible: false, zIndex: 5, focused: false, active: false })))
 
   const toggleWindow = (i: number, action: 'show' | 'hide' | 'minimize' | 'focus') => {
     let arr = [...windowState]
@@ -29,16 +22,13 @@ function Desktop() {
 
     //If you close a window while other windows are open, find one and set it to focused
     for (let j = 0; j < arr.length; j++) {
-      if ((action === 'hide' || action === 'minimize') && arr[j].visible) {
+      if ((action === 'hide') && arr[j].visible) {
         arr[j].focused = true
         break;
       } else {
         arr[j].focused = j === i
       }
     }
-
-    console.log(action, arr[i]);
-
 
     setWindowsState(arr)
   }
