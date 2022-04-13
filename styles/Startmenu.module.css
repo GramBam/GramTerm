@@ -1,6 +1,6 @@
 .menu {
   width: 165px;
-  height: 282px;
+  height: 270px;
   background: #c3c3c3;
   overflow: hidden;
   border-top: 2px solid #fafafa;
@@ -17,7 +17,7 @@
   z-index: 5;
   font-weight: 500;
   position: absolute;
-  bottom: 35px;
+  bottom: 3.75vh;
   left: 0px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .clicked {
-  background: repeating-conic-gradient(#bdbebd 0 25%,#fff 0 50%) 50%/2px 2px;
+  background: repeating-conic-gradient(#bdbebd 0 25%, #fff 0 50%) 50%/2px 2px;
   box-shadow: none;
   border-top: 1.5px solid #000;
   border-left: 1.5px solid #000;
@@ -53,10 +53,10 @@
 
 .sidebar {
   width: 25px;
-    background: #7b7d7b;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
+  background: #7b7d7b;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
 }
 
 .menuItem {
