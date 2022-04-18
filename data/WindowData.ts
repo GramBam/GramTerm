@@ -1,4 +1,4 @@
-export const pages: { img: string, title: string }[] = [
+export const windows: { img: string, title: string }[] = [
   { img: '/assets/images/shortcuts/mycomputer.png', title: "My Computer" },
   { img: '/assets/images/shortcuts/resume.png', title: "Resume" },
   { img: '/assets/images/shortcuts/projects.png', title: "Projects" },

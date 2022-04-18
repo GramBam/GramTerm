@@ -3,12 +3,12 @@ import desktopStyles from '../../styles/Desktop.module.css'
 import Taskbar from "../Taskbar/Taskbar"
 import Window from "../Windows/Window"
 import { useState } from "react"
-import { pages } from "../../data/PageData"
+import { windows } from "../../data/WindowData"
 
 function Desktop() {
 
   const [menuVisible, setMenuVisible] = useState(false)
-  const [windowState, setWindowsState] = useState(Array.from({ length: pages.length }, () => ({
+  const [windowState, setWindowsState] = useState(Array.from({ length: windows.length }, () => ({
     visible: false, zIndex: 5, focused: false, active: false
   })))
 
@@ -46,12 +46,12 @@ function Desktop() {
   }
 
   const getWindows = () => {
-    return [...Array(pages.length)].map((_, i) => (
+    return [...Array(windows.length)].map((_, i) => (
       windowState[i].visible &&
       <Window
         id={i}
-        title={pages[i].title}
-        icon={pages[i].img}
+        title={windows[i].title}
+        icon={windows[i].img}
         key={i}
         cb={toggleWindow}
         zIndex={windowState[i].zIndex}
@@ -60,8 +60,8 @@ function Desktop() {
     ))
   }
 
-  const shortcuts = pages.map((page, i) => {
-    return <Shortcut img={page.img} title={page.title} key={i} id={i} cb={toggleWindow} />
+  const shortcuts = windows.map((window, i) => {
+    return <Shortcut img={window.img} title={window.title} key={i} id={i} cb={toggleWindow} />
   })
 
   return (

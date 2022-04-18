@@ -3,7 +3,7 @@ import StartButton from './StartMenu/StartButton'
 import taskbarStyles from '../../styles/Taskbar.module.css'
 import StartMenu from './StartMenu/StartMenu'
 import TaskbarButton from './TaskbarButton'
-import { pages } from '../../data/PageData'
+import { windows } from '../../data/WindowData'
 
 interface TaskbarProps {
   menuVisible: boolean;
@@ -19,8 +19,8 @@ function Taskbar({ menuVisible, setMenuVisible, windowState, windowStateCB }: Ta
     return [...Array(windowState.length)].map((_, i) => (
       windowState[i].active &&
       <TaskbarButton
-        icon={pages[i].img}
-        title={pages[i].title}
+        icon={windows[i].img}
+        title={windows[i].title}
         windowState={windowState[i]}
         cb={windowStateCB}
         key={i}
