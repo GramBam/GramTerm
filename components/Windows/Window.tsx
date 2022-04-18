@@ -5,6 +5,7 @@ import Resume from './Resume';
 import Languages from './Languages+Tools/Languages';
 import Tools from './Languages+Tools/Tools';
 import MyComputer from './MyComputer';
+import Projects from './Projects';
 
 interface WindowProps {
   icon: string
@@ -40,8 +41,12 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
 
   const [size, setSize] = useState({ full: false, width: defaultWidth, height: defaultHeight })
 
-  const handleMouseDown = (e: MouseEvent) => {
+
+
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     focusWindow()
+
+    let client = getClientPos(e)
 
     let target = e.target as HTMLElement
     if (target.id !== 'nav') {
@@ -49,22 +54,25 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
     }
     e.stopPropagation()
     setDragState((prevState) => ({
-      diffX: e.clientX - target.getBoundingClientRect().left,
-      diffY: e.clientY - target.getBoundingClientRect().top,
+      diffX: client.x - target.getBoundingClientRect().left,
+      diffY: client.y - target.getBoundingClientRect().top,
       dragging: true,
       style: prevState.style
     }))
   }
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation()
+
+    let client = getClientPos(e)
+
     if (dragState.dragging) {
-      let style = { left: e.clientX - dragState.diffX, top: e.clientY - dragState.diffY }
+      let style = { left: client.x - dragState.diffX, top: client.y - dragState.diffY }
       setDragState((prevState) => ({ ...prevState, style }))
     }
   }
 
-  const handleMouseUp = (e: MouseEvent) => {
+  const handleMouseUp = (e: React.MouseEvent | React.TouchEvent) => {
     if (dragState.dragging) {
       let parent = ((e.target as HTMLElement).parentElement as HTMLElement)
       let bounds = checkBounds(parent.getBoundingClientRect())
@@ -72,6 +80,16 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       let left: number = bounds.left
       let top: number = bounds.top
       setDragState((prevState) => ({ ...prevState, dragging: false, style: { left, top } }))
+    }
+  }
+
+  const getClientPos = (e: React.MouseEvent | React.TouchEvent): { x: number, y: number } => {
+
+    let isMobile: boolean = e.type === 'touchmove' || e.type === 'touchstart'
+
+    return {
+      x: isMobile ? (e as React.TouchEvent).touches[0].pageX : (e as React.MouseEvent).clientX,
+      y: isMobile ? (e as React.TouchEvent).touches[0].pageY : (e as React.MouseEvent).clientY
     }
   }
 
@@ -116,40 +134,48 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
   const getWindowContent = () => {
     switch (title) {
       case 'Resume': return <Resume />;
-      case 'Languages & Frameworks': return <Languages />;
+      case 'Languages': return <Languages />;
       case 'Tools': return <Tools />;
       case 'My Computer': return <MyComputer />;
+      case 'Projects': return <Projects />;
     }
   }
 
   return (
-    <div
-      className={windowStyles.windowMain}
-      style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height, zIndex }}
-      onMouseDown={focusWindow}
-    >
+
+    <>
       <div
-        className={windowStyles.windowNav}
-        id={'nav'}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onMouseOut={handleMouseUp}
-        style={{ backgroundColor: focused ? '#00007c' : '#7b7d7b' }}
+        className={windowStyles.windowMain}
+        style={{ top: dragState.style.top, left: dragState.style.left, width: size.width, height: size.height, zIndex }}
+        onMouseDown={focusWindow}
       >
-        <div className={windowStyles.windowName}>
-          <Image src={icon} alt="windowImg" width={15} height={15} className={windowStyles.windowImg} />
-          <p>{title}</p>
+        <div
+          className={windowStyles.windowNav}
+          id={'nav'}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onTouchMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onMouseOut={handleMouseUp}
+          onTouchEnd={handleMouseUp}
+          style={{ backgroundColor: focused ? '#00007c' : '#7b7d7b' }}
+        >
+          <div className={windowStyles.windowName}>
+            <Image src={icon} alt="windowImg" width={15} height={15} className={windowStyles.windowImg} />
+            <p>{title}</p>
+          </div>
+          <div className={windowStyles.windowButtons}>
+            <button id="minimize" onClick={hideWindow}>-</button>
+            <button id="resize" onClick={resizeWindow}><span>⠀</span></button>
+            <button id="hide" onClick={hideWindow}>×</button>
+          </div>
         </div>
-        <div className={windowStyles.windowButtons}>
-          <button id="minimize" onClick={hideWindow}>-</button>
-          <button id="resize" onClick={resizeWindow}><span>⠀</span></button>
-          <button id="hide" onClick={hideWindow}>×</button>
-        </div>
+        {getWindowContent()}
       </div>
-      {getWindowContent()}
-    </div>
+    </>
+
   )
 }
 

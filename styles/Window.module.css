@@ -10,7 +10,7 @@
   outline: 1px solid #dedede;
   overflow: auto;
   z-index: 4;
-  transition: width .5s, height .5s
+  transition: width .5s, height .5s;
 }
 
 @media screen and (max-width: 1000px) {

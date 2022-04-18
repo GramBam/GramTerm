@@ -14,6 +14,10 @@ function Shortcut({ img, title, id, cb }: ShortcutProps) {
     cb(id, 'show')
   }
 
+  if (title === 'Languages') {
+    title = 'Languages & Frameworks'
+  }
+
   return (
     <div className={desktopStyles.shortcut} onTouchStart={openWindow} onDoubleClick={openWindow}>
       <Image src={img} alt="img" width={35} height={35} />
