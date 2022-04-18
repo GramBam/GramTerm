@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ProjectData, projects } from '../../data/ProjectData';
 import styles from '../../styles/WindowPages.module.css'
 

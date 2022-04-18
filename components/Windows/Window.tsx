@@ -6,6 +6,7 @@ import Languages from './Languages+Tools/Languages';
 import Tools from './Languages+Tools/Tools';
 import MyComputer from './MyComputer';
 import Projects from './Projects';
+import Mail from './Mail';
 
 interface WindowProps {
   icon: string
@@ -138,6 +139,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       case 'Tools': return <Tools />;
       case 'My Computer': return <MyComputer />;
       case 'Projects': return <Projects />;
+      case 'Mail': return <Mail />;
     }
   }
 
