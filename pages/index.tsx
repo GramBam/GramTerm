@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { useEffect } from 'react';
 import Desktop from '../components/Desktop/Desktop'
+
 const Home: NextPage = () => {
 
   useEffect(() => {
