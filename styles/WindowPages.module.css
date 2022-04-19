@@ -84,8 +84,99 @@
 }
 
 .mailContainer {
-  font-size: 10em;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.mailSend {
+  border: 1px solid #fff;
+  outline: 1px solid #7b7d7b;
+  font-size: 12px;
+  padding: 4px;
+  margin: 2px;
+}
+
+.mailContent {
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+}
+
+.mailDetails {
+  border: 1px solid #fff;
+  background: #fff;
+  width: 100%;
+}
+
+.mailDetails input {
+  outline: none;
+  border: none;
+  font-family: 'MS Sans Serif';
+}
+
+.mailDetails p {
+  color: #9b9b9b;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.mailSubject {
+  display: flex;
+  height: 20px;
+  align-items: center;
+}
+
+.mailReceipient {
+  background: #c2d6fc;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.mailHeader {
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 10px;
+  margin-left: 8px;
+  text-overflow: ellipsis;
+  overflow: auto;
+}
+
+.mailForm {
+  user-select: none;
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+}
+
+.mailSendButton {
+  box-shadow: 1.5px 1.5px #000;
+  border-top: 1.5px solid #fafafa;
+  border-left: 1.5px solid #fafafa;
+  border-bottom: 1.5px solid #5a5a5a;
+  border-right: 1.5px solid #5a5a5a;
+  background: silver;
+  padding: 3px;
+  display: flex;
+}
+
+.mailSendButton p {
+  margin: 0 2px;
+}
+
+.mailText {
+  background: none;
+  border-top: 1.5px solid #000;
+  border-left: 1.5px solid #000;
+  border-bottom: 1.5px solid #fafafa;
+  border-right: 1.5px solid #fafafa;
+  box-shadow: none;
+  resize: none;
+  color: #000;
+  font-size: 14px;
+  font-family: 'MS Sans Serif';
+  flex-grow: 1;
 }
 
 .notes {
