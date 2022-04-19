@@ -19,7 +19,7 @@ function StartMenu({ show }: StartMenuProps) {
           <div className={startmenuStyles.menuList}>
             <StartMenuItem img={dir + 'linkedin.webp'} title="LinkedIn" url='https://www.linkedin.com/in/graham-moss/' />
             <StartMenuItem img={dir + 'github.webp'} title="GitHub" url='https://github.com/GramBam/' />
-            <StartMenuItem img={dir + 'shortcuts/resume.png'} title="Resume" url='/assets/pdfs/myResume.pdf' />
+            <StartMenuItem img={dir + 'resume.png'} title="Resume" url='/assets/pdfs/myResume.pdf' />
             <StartMenuItem img={dir + 'run.png'} title="Run..." />
             <StartMenuItem img={dir + 'shutdown.png'} title="Shut Down..." />
           </div>
