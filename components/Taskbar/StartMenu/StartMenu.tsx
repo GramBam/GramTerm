@@ -7,7 +7,7 @@ export interface StartMenuProps {
 }
 
 function StartMenu({ show }: StartMenuProps) {
-  const dir = '/assets/images/'
+  const dir = '/assets/images/taskbar'
 
   return (
     <>
