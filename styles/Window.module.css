@@ -11,6 +11,7 @@
   overflow: auto;
   z-index: 4;
   transition: width .5s, height .5s;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1000px) {
@@ -33,6 +34,13 @@
   padding: 2px 2px 2px 2px;
   cursor: grab;
   user-select: none;
+  position: relative;
+  width: 100%;
+}
+
+.windowContent {
+  height: 100%;
+  overflow: auto;
 }
 
 .windowName {
@@ -56,6 +64,7 @@
   justify-content: space-between;
   background-color: #333;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .windowButtons button {

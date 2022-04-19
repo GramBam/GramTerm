@@ -7,6 +7,7 @@ import Tools from './Languages+Tools/Tools';
 import MyComputer from './MyComputer';
 import Projects from './Projects';
 import Mail from './Mail';
+import Notes from './Notes';
 
 interface WindowProps {
   icon: string
@@ -121,7 +122,6 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
     cb(id, 'focus')
   }
 
-
   const resizeWindow = () => {
     if (size.full) {
       setDragState((prevState) => ({ ...prevState, style: getRandomStartPoint() }))
@@ -140,6 +140,7 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
       case 'My Computer': return <MyComputer />;
       case 'Projects': return <Projects />;
       case 'Mail': return <Mail />;
+      case 'Notes': return <Notes />;
     }
   }
 
@@ -174,7 +175,9 @@ function Window({ icon, title, id, cb, zIndex, focused }: WindowProps) {
             <button id="hide" onClick={hideWindow}>×</button>
           </div>
         </div>
-        {getWindowContent()}
+        <div className={windowStyles.windowContent}>
+          {getWindowContent()}
+        </div>
       </div>
     </>
 
