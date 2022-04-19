@@ -1,4 +1,4 @@
-import speakerIcon from '../../public/assets/images/speakers.png'
+import speakerIcon from '../../public/assets/images/taskbar/speakers.png'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import taskbarStyles from '../../styles/Taskbar.module.css'

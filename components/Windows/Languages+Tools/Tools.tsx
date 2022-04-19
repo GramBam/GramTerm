@@ -3,7 +3,7 @@ import TitledIcon from './TitledIcon'
 
 function Tools() {
 
-  const data = ['git', 'wordpress', 'vscode', 'photoshop', 'netlify', 'ubuntu']
+  const data = ['git', 'wordpress', 'vscode', 'photoshop', 'excel', 'vercel', 'netlify', 'ubuntu']
 
   return (
     <div className={toolStyles.icons}>

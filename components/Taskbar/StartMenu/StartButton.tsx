@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import startmenuStyles from '../../../styles/Startmenu.module.css'
-import logo from '../../../public/assets/images/logo.png'
+import logo from '../../../public/assets/images/taskbar/logo.png'
 import { SyntheticEvent } from 'react';
 
 export interface StartButtonProps {
