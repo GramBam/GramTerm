@@ -1,45 +1,15 @@
 import Image from 'next/image'
+import { MyComputerData } from '../../data/MyComputerData'
 import styles from '../../styles/WindowPages.module.css'
 
 function MyComputer() {
 
-  const size = 85
-
   return (
     <div className={styles.appsContainer}>
       <div className={styles.computerApps}>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/civ.png' height={size} width={size} />
-          <p>Civilization</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/CounterStrike.png' height={size} width={size} />
-          <p>Counter-Strike</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/doom.png' height={size} width={size} />
-          <p>DOOM</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/microsoftgolf.png' height={size} width={size} />
-          <p>Microsoft Golf</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/MicrosoftOffice.png' height={size} width={size} />
-          <p>Microsoft Office</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/NeedForSpeed.png' height={size} width={size} />
-          <p>Need for Speed</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/solitaire.png' height={size} width={size} />
-          <p>Solitaire</p>
-        </div>
-        <div className={styles.compApp}>
-          <Image src='/assets/images/icons/StarCraft.png' height={size} width={size} />
-          <p>StarCraft</p>
-        </div>
+        {
+          MyComputerData.map((data, i) => { return <MyComputerIcon title={data.title} img={data.img} key={i} /> })
+        }
       </div>
     </div>
 
@@ -47,3 +17,28 @@ function MyComputer() {
 }
 
 export default MyComputer
+
+interface MyComputerIconProps {
+  title: string;
+  img: string;
+}
+
+function MyComputerIcon({ title, img }: MyComputerIconProps) {
+  const size = 85
+
+  if (title === 'BrickBreaker') {
+    return (
+      <a className={styles.compApp} href="https://gmoss.ca/Epileptic-Brickbreaker/" target='_blank' rel='noreferrer'>
+        <Image src={img} height={size} width={size} alt={title} />
+        <p>{title}</p>
+      </a>
+    )
+  } else {
+    return (
+      <div className={styles.compApp}>
+        <Image src={img} height={size} width={size} alt={title} />
+        <p>{title}</p>
+      </div>
+    )
+  }
+}

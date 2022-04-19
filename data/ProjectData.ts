@@ -29,7 +29,7 @@ export const projects: ProjectData[] = [
     img: '/assets/images/projects/twitter-bot.png',
     title: "Toronto Job Twitter Bot",
     info: 'My Twitter Bot from 2018 which uses the Twitter API. Retweets posts with #jobs and #toronto tags every 10 minutes. Over 10,000 retweets and 100 followers!',
-    link: '',
+    link: 'https://twitter.com/TOjobTweeter',
     stack: '[Javascript, Twitter API]',
     github: 'https://github.com/GramBam/toronto-job-twitter-bot'
   },

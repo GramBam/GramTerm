@@ -92,10 +92,12 @@
   background-color: #FFF;
   height: 95.75%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .notesTitle {
-  margin-top: 0;
+  margin-top: 15px;
   font-size: 4.20em;
 }
 
@@ -103,7 +105,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 15px;
+  margin-left: 20px;
   text-align: left;
 }
 
