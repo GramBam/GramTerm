@@ -8,8 +8,6 @@
   border-right: 1.5px solid #5a5a5a;
   border-bottom: 1.5px solid #5a5a5a;
   box-shadow: 1.5px 1.5px #000;
-  max-height: 100%;
-  max-width: 100%;
   outline: 1px solid #dedede;
   display: flex;
   flex-direction: row;
@@ -54,7 +52,6 @@
 .sidebar {
   width: 25px;
   background: #7b7d7b;
-  height: 100%;
   display: flex;
   align-items: flex-end;
 }
